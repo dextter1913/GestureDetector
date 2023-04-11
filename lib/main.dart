@@ -28,22 +28,23 @@ class _MyPageState extends State<MyPage> {
   @override
   Widget build(BuildContext context) {
     String titulo = "Gesture Detector";
-    String texto = "mis videos";
-    String texto2 = "mis imagenes";
-    String texto3 = "mis documentos";
-    String texto4 = "mis audios";
+    List<String> texto = [
+      "mis videos",
+      "mis imagenes",
+      "mis documentos",
+      "mis audios",
+    ];
+
     return Scaffold(
       appBar: AppBar(
         title: Text(titulo),
       ),
       body: Center(
-        child: ListView(
-          children: [
-            _MyGestureDetector(texto),
-            _MyGestureDetector(texto2),
-            _MyGestureDetector(texto3),
-            _MyGestureDetector(texto4),
-          ],
+        child: ListView.builder(
+          itemCount: texto.length,
+          itemBuilder: (BuildContext context, int index) {
+            return _MyGestureDetector(texto[index]);
+          },
         ),
       ),
     );
